@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscription - Formation SYCEBNL</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+    }
+    .form-section {
+      padding: 60px 0;
+    }
+    .form-title {
+      color: #003366;
+    }
+    .btn-primary {
+      background-color: #003366;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+    .logo {
+      width: 100px;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="logo.jfif" alt="Logo CFCGEB" class="logo" />
+      </a>
+      <div>
+        <a class="btn btn-outline-primary me-2" href="index.html">Accueil</a>
+        <a class="btn btn-primary me-2" href="inscription.html">Inscription</a>
+        <a class="btn btn-outline-primary me-2" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Formulaire -->
+  <section class="form-section">
+    <div class="container">
+      <h2 class="text-center form-title mb-4">Formulaire d'inscription à la formation SYCEBNL</h2>
+
+      <form id="inscriptionForm" class="row g-3 bg-white p-4 shadow rounded">
+
+        <!-- 10 Champs requis -->
+        <div class="col-md-6">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" name="nom" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="prenom" class="form-label">Prénom</label>
+          <input type="text" class="form-control" name="prenom" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="sexe" class="form-label">Sexe</label>
+          <select class="form-select" name="sexe" required>
+            <option value="">Choisir...</option>
+            <option>Masculin</option>
+            <option>Féminin</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="naissance" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" name="naissance" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Adresse email</label>
+          <input type="email" class="form-control" name="email" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="tel" class="form-label">Numéro de téléphone</label>
+          <input type="tel" class="form-control" name="tel" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="niveau" class="form-label">Niveau d’étude</label>
+          <input type="text" class="form-control" name="niveau" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="profession" class="form-label">Profession actuelle</label>
+          <input type="text" class="form-control" name="profession" required />
+        </div>
+
+        <div class="col-md-6">
+          <label for="mode" class="form-label">Mode de participation</label>
+          <select class="form-select" name="mode" required>
+            <option value="">Choisir...</option>
+            <option>Présentiel</option>
+            <option>En ligne</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="disponibilite" class="form-label">Disponibilité</label>
+          <input type="text" class="form-control" name="disponibilite" required />
+        </div>
+
+        <!-- Bouton d'envoi -->
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg">Envoyer l’inscription</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CFCGEB - Votre fiscalité, Notre expertise</p>
+  </footer>
+
+  <!-- EmailJS Configuration -->
+  <script>
+    (function(){
+      emailjs.init("vaecERSkKrpweeC7w"); // Clé publique
+    })();
+
+    document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_2mkeyvr', 'template_zmcuhrj', this)
+        .then(function() {
+          window.location.href = "merci.html";
+        }, function(error) {
+          alert("Erreur lors de l’envoi. Veuillez réessayer.");
+          console.error("Erreur EmailJS:", error);
+        });
+    });
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
